@@ -1,0 +1,9 @@
+{
+	"name": "adf-data-demo-sravani",
+	"location": "westus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "f274c961-0e21-4e59-827a-bef5250994cf",
+		"tenantId": "1fedd5bc-68f7-4b11-b87a-ffc086b31302"
+	}
+}
