@@ -1,20 +1,21 @@
-# Bronze to Silver Transformation
+from pyspark.sql.functions import col
 
-from pyspark.sql.functions import *
-
-# Read from Bronze
+# Bronze → Silver
 df = spark.read.json("abfss://bronze@datalakesravanidemo.dfs.core.windows.net/users/raw/")
 
-# Basic Transformation (flatten example)
 df_clean = df.select(
     col("id"),
     col("name"),
     col("email"),
     col("phone"),
     col("username")
-)
+).dropDuplicates(["id"]).fillna("NA")
 
-# Write to Silver (Delta format)
 silver_path = "abfss://silver@datalakesravanidemo.dfs.core.windows.net/users/"
-
 df_clean.write.mode("overwrite").format("delta").save(silver_path)
+
+# Silver → Gold
+df_gold = df_clean.select("id", "name", "email")
+
+gold_path = "abfss://gold@datalakesravanidemo.dfs.core.windows.net/users/"
+df_gold.write.mode("overwrite").format("delta").save(gold_path)
