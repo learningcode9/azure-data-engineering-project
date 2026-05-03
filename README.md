@@ -1,30 +1,39 @@
-# Azure Data Engineering Project
+# Azure Data Engineering Project (Bronze → Silver → Gold)
 
-## 📌 Project Overview
+## 📌 Overview
 
-This project demonstrates an end-to-end data engineering pipeline using Azure services.
+Built an end-to-end data pipeline using Azure and Databricks implementing Medallion Architecture.
 
 ## 🏗 Architecture
 
-* Azure Data Factory (ADF)
 * Azure Data Lake Storage (ADLS Gen2)
+* Azure Data Factory (ADF)
 * Azure Databricks (Serverless)
 * Unity Catalog
 
 ## 🔄 Data Flow
 
-1. Raw data ingested into Bronze layer (ADLS)
-2. Data transformed in Databricks (Bronze → Silver)
-3. Clean data stored in Delta format
-4. Business-ready data prepared in Gold layer
+API → ADF → Bronze (ADLS) → Databricks → Silver → Gold
 
 ## 📂 Layers
 
-* Bronze → Raw JSON data
-* Silver → Cleaned & structured data (Delta)
-* Gold → Business-ready data
+* Bronze: Raw JSON data
+* Silver: Cleaned & structured data (Delta format)
+* Gold: Business-ready curated data
 
-## ⚙️ Technologies Used
+## ⚙️ Key Features
+
+* End-to-end pipeline
+* Delta Lake implementation
+* Data deduplication & cleaning
+* Secure access using Managed Identity
+* Unity Catalog integration
+
+## 🚀 Future Enhancements
+
+* SCD Type 2 implementation
+* Power BI dashboards
+* Pipeline orchestration improvements
 
 * Azure Data Factory
 * Azure Data Lake Storage
@@ -39,9 +48,5 @@ This project demonstrates an end-to-end data engineering pipeline using Azure se
 * Secure access using Managed Identity
 * Delta Lake implementation
 
-## 📌 Future Enhancements
 
-* SCD Type 2 implementation
-* Power BI integration
-* CI/CD using Azure DevOps
 
